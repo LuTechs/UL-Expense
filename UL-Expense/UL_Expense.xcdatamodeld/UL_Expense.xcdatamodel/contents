@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Expense" representedClassName="Expense" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="expenseDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="expenseToExpenseTotal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExpenseTotal" inverseName="expenseTotaltoExpense" inverseEntity="ExpenseTotal" syncable="YES"/>
+        <relationship name="expenseToExpenseType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ExpenseType" inverseName="expenseTypeToExpense" inverseEntity="ExpenseType" syncable="YES"/>
+        <relationship name="expenseToPaymentType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentType" inverseName="paymentTypeToExpense" inverseEntity="PaymentType" syncable="YES"/>
+    </entity>
+    <entity name="ExpenseTotal" representedClassName="ExpenseTotal" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="expenseTotaltoExpense" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="expenseToExpenseTotal" inverseEntity="Expense" syncable="YES"/>
+    </entity>
+    <entity name="ExpenseType" representedClassName="ExpenseType" syncable="YES">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="expenseTypeToExpense" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="expenseToExpenseType" inverseEntity="Expense" syncable="YES"/>
+    </entity>
+    <entity name="PaymentType" representedClassName="PaymentType" syncable="YES">
+        <attribute name="paymentMethod" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="paymentTypeToExpense" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="expenseToPaymentType" inverseEntity="Expense" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Expense" positionX="421" positionY="-192" width="128" height="118"/>
+        <element name="ExpenseTotal" positionX="108" positionY="-162" width="128" height="73"/>
+        <element name="ExpenseType" positionX="288" positionY="26" width="128" height="73"/>
+        <element name="PaymentType" positionX="457" positionY="114" width="128" height="73"/>
+    </elements>
+</model>
